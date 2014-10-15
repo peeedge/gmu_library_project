@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141013215120) do
+ActiveRecord::Schema.define(version: 20141015223353) do
 
   create_table "books", force: true do |t|
     t.string   "title"
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20141013215120) do
     t.string   "isbn"
     t.string   "genre"
     t.string   "image_cover_url"
-    t.date     "publisehd_on"
+    t.date     "published_on"
     t.integer  "total_in_library"
     t.text     "abstract"
   end
