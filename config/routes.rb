@@ -7,5 +7,7 @@ get "/books/:id/edit" => "books#edit", as: 'edit_book'
 patch "/books/:id" => "books#update"
 delete "/books/:id" => "books#destroy"
 
+get "/users" => "users#index", as: 'users'
+
 root 'books#index'
 end
