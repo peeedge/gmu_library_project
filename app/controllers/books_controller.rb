@@ -2,7 +2,7 @@ class BooksController < ApplicationController
 
 	def index
 		@available_at = Time.now
-		@books = Book.order(:title)
+		@books = Book.order(:title).page(params[:page])
 	end
 
 	def new
@@ -27,7 +27,7 @@ class BooksController < ApplicationController
 
 	def update
 		if @book.update(book_params)
-			redirect_to @book, notice: "#{@book.title} was upadated!"
+			redirect_to @book, notice: "#{@book.title} was updated!"
 		else
 			render :new
 		end
