@@ -1,6 +1,5 @@
 class Book < ActiveRecord::Base
-	@available_at = Time.now
-	@books = Book.all
+	
 	GENRES = 'Mystery', 'NonFiction', 'Fiction'
 	validates :isbn, :title, :abstract, :pages, :genre, :total_in_library, :author, presence: true
 	validates :abstract, length: { minimum: 15 }, unless: 'abstract.blank?'
