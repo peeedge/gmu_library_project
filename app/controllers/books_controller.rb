@@ -2,7 +2,7 @@ class BooksController < ApplicationController
 
 	def index
 		@available_at = Time.now
-		@books = Book.order(:title)
+		@books = Book.order(:title).page(params[:page])
 	end
 
 	def new
