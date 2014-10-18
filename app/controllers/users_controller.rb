@@ -3,6 +3,4 @@ class UsersController < ApplicationController
 		@available_at = Time.now
 		@users = User.new
 	end
-
-	
 end
