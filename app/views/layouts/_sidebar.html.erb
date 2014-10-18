@@ -1,3 +1,4 @@
+<%- if user_signed_in? %>
 <div id="sidebar">
 <div class="panel panel-primary">
   <div class="panel-heading">
@@ -7,13 +8,16 @@
     <p>
       <%= link_to 'All Books', books_path %>
     </p>
+<%- if current_user.try(:admin?)%>
     <p>
-      <%= link_to 'Create Book', new_book_path %>
+      <%= link_to 'New Book', new_book_path %>
     </p>
-    <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
-<%- if !current_user.try(:admin?) %>
-  hello <br />
+    <p><%= link_to 'OverDue Book' %></p>
 <% end -%>
+    <p>
+    <%= link_to "Logout", destroy_user_session_path, :method => :delete %>
+    </p>
   </div>
 </div>
 </div>
+<% end -%>

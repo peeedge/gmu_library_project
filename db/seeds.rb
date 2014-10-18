@@ -6,3 +6,5 @@ Book.create(title:'Hamlet', author:'Shakespeare', pages:342, published_on: DateT
 User.create(username:'smbrown21', password:'smbrown21', password_confirmation:'smbrown21', admin:true)
 User.create(username:'peeedge', password:'peeedge', password_confirmation:'peeedge', admin:true)
 User.create(username:'priosalvarez', password:'priosalvarez', password_confirmation:'priosalvarez', admin:true)
+User.create(username:'admin', password:'admin', password_confirmation:'admin', admin:true)
+User.create(username:'nonadmin', password:'nonadmin', password_confirmation:'nonadmin', admin:false)
