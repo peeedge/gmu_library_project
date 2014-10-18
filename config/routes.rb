@@ -1,9 +1,10 @@
 Library::Application.routes.draw do
   devise_for :users
- # resources :books do
-  #	get 'page/:page', :action => :index, :on => :collection
+ resources :books do
+  get 'page/:page', :action => :index, :on => :collection
+end
 
-  	resources :books
+  	
   
 #get "/books" => "books#index", as: 'books'
 #get "/books/new" => "books#new", as: 'new_book'
