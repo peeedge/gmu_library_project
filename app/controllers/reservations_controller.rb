@@ -25,8 +25,8 @@ class ReservationsController < ApplicationController
 
         respond_to do |format|
           if @reservation.save
-            format.html { redirect_to @reservation, notice: 'Reservation was successfully created.' }
-            format.json { render :show, status: :created, location: @reservation }
+            format.html { redirect_to reservations_url, notice: 'Reservation was successfully created.' }
+            format.json { render :show, status: :created, location: reservations_url }
           else
             format.html { render :show }
             format.json { render json: @reservation.errors, status: :unprocessable_entity }
@@ -36,8 +36,12 @@ class ReservationsController < ApplicationController
 
   	def update
   		@reservation.update(reservation_params)
-  		redirect_to @reservation
+  		redirect_to reservations_url
   	end
+
+    def overdue
+      @overdue_reservations = Reservation.where('due_on < ?', Date.today)
+    end
 
   	def destroy
   		@reservation.destroy

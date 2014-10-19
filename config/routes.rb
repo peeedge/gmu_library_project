@@ -24,5 +24,7 @@ get "/reservations/:id/edit" => "reservations#edit", as: 'edit_reservation'
 patch "/reservations/:id" => "reservations#update"
 delete "/reservations/:id" => "reservations#destroy"
 
+get "/overdue" => "reservations#overdue", as: 'overdue'
+
 root 'books#index'
 end
