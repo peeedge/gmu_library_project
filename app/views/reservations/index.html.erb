@@ -5,12 +5,13 @@
 		<li>
 			<% @book = Book.find_by_id(myreservation.book_id)  %>
     		<% @user = User.find_by_id(myreservation.user_id) %>
-    		  <b><%= @user.username %></b> reserved <b><%= link_to(@book.title, @book) %></b> on <b><%= myreservation.reserved_on %></b> and is due on <b><%= myreservation.due_on %></b>
-			<%- if current_user.try(:admin?)%>
-			    		  <%= button_to 'Delete', myreservation,
+    		<p><%= link_to(@book.title, @book) %></p>
+			<p><img src=<%= @book.image_cover_url %> /></p>
+			<p><b>Reservered On: <%= myreservation.reserved_on %></b></p>
+			<p><b>Due On: <%= myreservation.due_on %></b></p>
+			    		  <%= button_to 'Return Book', myreservation,
 							method: :delete,
 							data: { confirm: 'Are you sure?' } %>
-			<% end -%>
 		</li>
 	<% end %>
 </ul>
@@ -25,8 +26,11 @@
 		<li>
 			<% @book = Book.find_by_id(allreservation.book_id)  %>
     		<% @user = User.find_by_id(allreservation.user_id) %>
-    		  <b><%= @user.username %></b> reserved <b><%= link_to(@book.title, @book) %></b> on <b><%= allreservation.reserved_on %></b> and is due on <b><%= allreservation.due_on %></b>
-			    		  <%= button_to 'Delete', allreservation,
+    		 <p><%= link_to(@book.title, @book) %></p>
+			<p><img src=<%= @book.image_cover_url %> /></p>
+			<p><b>Reservered By: <%= @user.username %></b></p>
+			<p><b>Reservered On: <%= allreservation.reserved_on %></b></p>
+			<p><b>Due On: <%= allreservation.due_on %></b></p>   		  <%= button_to 'Return Book', allreservation,
 							method: :delete,
 							data: { confirm: 'Are you sure?' } %>
 		</li>
