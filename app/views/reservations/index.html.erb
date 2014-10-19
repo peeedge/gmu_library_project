@@ -1,11 +1,35 @@
-Welcome <%= current_user.username %>
+<h3><%= current_user.username %>'s Reservations</h3>
 <br />
 <ul>
-	<% @reservations.each do |reservation| %>
+	<% @myreservations.each do |myreservation| %>
 		<li>
-			<% @book = Book.find_by_id(reservation.book_id)  %>
-    		<% @user = User.find_by_id(reservation.user_id) %>
-    		  <b><%= @user.username %></b> reserved <b><%= link_to(@book.title, @book) %></b> on <b><%= reservation.reserved_on %></b> and is due on <b><%= reservation.due_on %></b>
+			<% @book = Book.find_by_id(myreservation.book_id)  %>
+    		<% @user = User.find_by_id(myreservation.user_id) %>
+    		  <b><%= @user.username %></b> reserved <b><%= link_to(@book.title, @book) %></b> on <b><%= myreservation.reserved_on %></b> and is due on <b><%= myreservation.due_on %></b>
+			<%- if current_user.try(:admin?)%>
+			    		  <%= button_to 'Delete', myreservation,
+							method: :delete,
+							data: { confirm: 'Are you sure?' } %>
+			<% end -%>
 		</li>
 	<% end %>
 </ul>
+
+<br />
+
+<%- if current_user.try(:admin?)%>
+<h3>All Reservations</h3>
+<br />
+<ul>
+	<% @allreservations.each do |allreservation| %>
+		<li>
+			<% @book = Book.find_by_id(allreservation.book_id)  %>
+    		<% @user = User.find_by_id(allreservation.user_id) %>
+    		  <b><%= @user.username %></b> reserved <b><%= link_to(@book.title, @book) %></b> on <b><%= allreservation.reserved_on %></b> and is due on <b><%= allreservation.due_on %></b>
+			    		  <%= button_to 'Delete', allreservation,
+							method: :delete,
+							data: { confirm: 'Are you sure?' } %>
+		</li>
+	<% end %>
+</ul>
+<% end -%>

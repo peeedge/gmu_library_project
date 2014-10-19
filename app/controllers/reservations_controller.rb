@@ -2,8 +2,8 @@ class ReservationsController < ApplicationController
 
    def index
     @available_at = Time.now
-    @reservations = Reservation.where('user_id' => current_user.id)
-    #@reservations = Reservation.all
+    @myreservations = Reservation.where('user_id' => current_user.id)
+    @allreservations = Reservation.all
    end
 
     def show
@@ -48,7 +48,11 @@ class ReservationsController < ApplicationController
     end
 
   	def destroy
-  		@reservation.destroy
+      @book = Book.find_by_id(@reservation.book_id) 
+      @book.total_in_library = @book.total_in_library + 1
+      @book.save
+  		
+      @reservation.destroy
   		redirect_to reservations_url
   	end
 
@@ -57,10 +61,10 @@ class ReservationsController < ApplicationController
       #params.require(:reservation).permit(:reserved_on, :due_on, :user_id, :book_id, :created_at, :updated_at)
   	end
   	
-    #before_create :set_reserved_on,
+    before_action :set_reserved_on, only: [ :show, :edit, :update, :destroy]
 
-  	#def set_reserved_on
-  	# @reservation = Reservation.find(params[:id])
-  	#end
+  	def set_reserved_on
+  	 @reservation = Reservation.find(params[:id])
+  	end
 
   end
