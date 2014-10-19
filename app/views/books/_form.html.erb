@@ -7,12 +7,14 @@
   
   <%= f.label :image_cover_url %> <%= f.text_field :image_cover_url %><br />
   
-  <%= f.label :abstract %> <%= f.text_field :abstract %><br />
+  
   <%= f.label :genre %> <%= f.select :genre, Book::GENRES, prompt: 'Select Genre' %> <br />
   <%- if current_user.try(:admin?)%>
   <%= f.label :total_in_library %> <%= f.select :total_in_library, Book::TOTALINLIBRARY, prompt: 'Number of Available Copies' %><br />
   <% end -%>
-  <%= f.label :published_on %> <%= f.date_select :published_on, :discard_day => true, :order => [:month, :year], :start_year => 1900, :end_year => Time.now.year %><br />
+  <%= f.label :published_on %> <%= f.date_select :published_on, :discard_day => true, :order => [:month, :year], :start_year => 1900, :end_year => Time.now.year %><br /><br />
+  <%= f.label :abstract %> <%= f.text_area :abstract, :cols => 5, :rows => 5 %><br />
+
   <br /><br />
   <p>
     <%= f.submit %>
