@@ -9,6 +9,5 @@ class Book < ActiveRecord::Base
    		numericality: { only_integer: true, greater_than_or_equal_to: 0 },
    		unless: "pages.blank?"
  	validates :genre, inclusion: { in: GENRES, message: "must be from #{GENRES.first} to #{GENRES.last}" }
-
-
+    has_many :reservations, dependent: :destroy
 end
