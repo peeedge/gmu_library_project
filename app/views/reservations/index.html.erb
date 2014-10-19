@@ -1,9 +1,11 @@
 Welcome <%= current_user.username %>
-
+<br />
 <ul>
 	<% @reservations.each do |reservation| %>
 		<li>
-  			<%= link_to(reservation.id , reservation) %>
+			<% @book = Book.find_by_id(reservation.book_id)  %>
+    		<% @user = User.find_by_id(reservation.user_id) %>
+    		  <b><%= @user.username %></b> reserved <b><%= @book.title %></b> on <b><%= reservation.reserved_on %></b> and is due on <b><%= reservation.due_on %></b>
 		</li>
 	<% end %>
 </ul>

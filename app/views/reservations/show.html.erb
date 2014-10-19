@@ -1,7 +1,7 @@
 <article class="book">
   <header>
   </header>
-  <p><label>User:</label> <%= @reservation %></p>
-  <p><label>Book:</label> <%= @reservation %></p>
-</article>
 
+  <p><label><%= @user.username %></label> reserved <label><%= @book.title %></label> on <label><%= @reservation.reserved_on %></label> and is due on <label><%= @reservation.due_on %></label> </p>
+  
+</article>
