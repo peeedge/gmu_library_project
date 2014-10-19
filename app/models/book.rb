@@ -1,5 +1,5 @@
 class Book < ActiveRecord::Base
-	
+
 	GENRES = 'Mystery', 'NonFiction', 'Fiction'
 	TOTALINLIBRARY = 0,1,2,3,4,5
 	#AUTHORS = 
@@ -10,4 +10,10 @@ class Book < ActiveRecord::Base
    		unless: "pages.blank?"
  	validates :genre, inclusion: { in: GENRES, message: "must be from #{GENRES.first} to #{GENRES.last}" }
     has_many :reservations, dependent: :destroy
+
+    # It returns the articles whose titles contain one or more words that form the query
+  def self.search(query)
+    # where(:title, query) -> This would return an exact match of the query
+    where("title like ?", "%#{query}%") 
+  end
 end
