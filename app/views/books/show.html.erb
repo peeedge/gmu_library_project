@@ -18,7 +18,9 @@
 <br />
 <br />
 
-<% if (@book.total_in_library > 0) %>
+<%@existingReservation = Reservation.find_by('book_id = ? and user_id = ?', @book.id, current_user.id)%>
+
+<% if (@book.total_in_library > 0 && @existingReservation.nil?) %>
  <%= form_for(Reservation.new) do |f| %>
     <%= f.hidden_field( :book_id, :value => @book.id.to_s) %>
     <%= f.submit "Reserve" %>
