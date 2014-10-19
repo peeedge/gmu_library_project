@@ -4,7 +4,7 @@ The following is a list of overdue items
 		<li>
 			<% @book = Book.find_by_id(overdue_reservation.book_id)  %>
     		<% @user = User.find_by_id(overdue_reservation.user_id) %>
-    		  <b><%= @user.username %></b> reserved <b><%= @book.title %></b> on <b><%= overdue_reservation.reserved_on %></b> and is due on <b><%= overdue_reservation.due_on %></b>
+    		  <b><%= @user.username %></b> reserved <b><%= @book.title %></b> on <b><%= overdue_reservation.reserved_on %></b> and was due on <b><font color="red"><%= overdue_reservation.due_on %></font></b>
 		</li>
 	<% end %>
 </ul>
