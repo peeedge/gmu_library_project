@@ -2,8 +2,8 @@ class ReservationsController < ApplicationController
 
    def index
     @available_at = Time.now
-    @myreservations = Reservation.where('user_id' => current_user.id)
-    @allreservations = Reservation.all
+    @myreservations = Reservation.where('user_id' => current_user.id).order(:due_on).page(params[:page])
+    @allreservations = Reservation.order(:due_on).page(params[:page])
    end
 
     def show

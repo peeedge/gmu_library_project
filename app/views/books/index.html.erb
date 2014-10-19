@@ -1,6 +1,7 @@
 Welcome <%= current_user.username %>
 
 <p>Available as of <%= formatted_time(@available_at) %></p>
+<%= page_entries_info @books %>
 <ul>
 	<% @books.each do |book| %>
   <li>
@@ -10,3 +11,4 @@ Welcome <%= current_user.username %>
 	</li>
 <% end %>
 </ul>
+<%= paginate @books %>
