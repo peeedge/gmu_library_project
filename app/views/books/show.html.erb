@@ -14,9 +14,15 @@
 </article>
 
 <%= link_to 'All Books', books_path %> | <%= link_to 'Edit', edit_book_path(@book) %>
-<%= form_for(Reservation.new) do |f| %>
+
+<br />
+<br />
+
+<% if (@book.total_in_library > 0) %>
+ <%= form_for(Reservation.new) do |f| %>
     <%= f.hidden_field( :book_id, :value => @book.id.to_s) %>
     <%= f.submit "Reserve" %>
+ <% end %>
 <% end %>
 
 <%= button_to 'Delete', @book,

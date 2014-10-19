@@ -5,7 +5,7 @@ Welcome <%= current_user.username %>
 		<li>
 			<% @book = Book.find_by_id(reservation.book_id)  %>
     		<% @user = User.find_by_id(reservation.user_id) %>
-    		  <b><%= @user.username %></b> reserved <b><%= @book.title %></b> on <b><%= reservation.reserved_on %></b> and is due on <b><%= reservation.due_on %></b>
+    		  <b><%= @user.username %></b> reserved <b><%= link_to(@book.title, @book) %></b> on <b><%= reservation.reserved_on %></b> and is due on <b><%= reservation.due_on %></b>
 		</li>
 	<% end %>
 </ul>
