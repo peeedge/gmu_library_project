@@ -11,11 +11,13 @@
   <p><label>published_on:</label> <%= @book.published_on %></p>
   <p><label>total_in_library:</label> <%= @book.total_in_library %></p>
   <p><label>abstract:</label> <%= @book.abstract %></p>
-  
-  
 </article>
 
 <%= link_to 'All Books', books_path %> | <%= link_to 'Edit', edit_book_path(@book) %>
+<%= form_for(Reservation.new) do |f| %>
+    <%= f.hidden_field( :book_id, :value => @book.id.to_s) %>
+    <%= f.submit "Reserve" %>
+<% end %>
 
 <%= button_to 'Delete', @book,
 				method: :delete,

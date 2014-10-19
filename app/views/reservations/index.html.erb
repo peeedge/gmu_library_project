@@ -1,0 +1,9 @@
+Welcome <%= current_user.username %>
+
+<ul>
+	<% @reservations.each do |reservation| %>
+		<li>
+  			<%= link_to(reservation.id , reservation) %>
+		</li>
+	<% end %>
+</ul>

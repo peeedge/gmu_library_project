@@ -16,5 +16,13 @@ end
 
 get "/users" => "users#index", as: 'users'
 
+get "/reservations" => "reservations#index", as: 'reservations'
+get "/reservations/new" => "reservations#new", as: 'new_reservation'
+get "/reservations/:id" => "reservations#show", as: 'reservation'
+post "/reservations" => "reservations#create"
+get "/reservations/:id/edit" => "reservations#edit", as: 'edit_reservation'
+patch "/reservations/:id" => "reservations#update"
+delete "/reservations/:id" => "reservations#destroy"
+
 root 'books#index'
 end
