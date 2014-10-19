@@ -7,10 +7,9 @@ class ReservationsController < ApplicationController
    end
 
     def show
-    #@reservations = Reservation.where('user_id' => current_user.id)
-    #@reservation = Reservation.find_by_id(params[:id]) 
-    #@book = Book.find_by_id(@reservation.book_id) 
-    #@user = User.find_by_id(@reservation.user_id) 
+    @reservation = Reservation.find_by_id(params[:id]) 
+    @book = Book.find_by_id(@reservation.book_id) 
+    @user = User.find_by_id(@reservation.user_id) 
     #  respond_to do |format|
        # format.html
       #  format.json { render :json => @reservations }
@@ -19,20 +18,20 @@ class ReservationsController < ApplicationController
 
 
   	def create
-      @reservation = Reservation.new(reservation_params)
-      @reservation.user_id = current_user.id
-      @reservation.reserved_on = Date.today
-      @reservation.due_on  = Date.today + 7
+        @reservation = Reservation.new(reservation_params)
+        @reservation.user_id = current_user.id
+        @reservation.reserved_on = Date.today
+        @reservation.due_on  = Date.today + 7
 
-      respond_to do |format|
-        if @reservation.save
-          format.html { redirect_to @reservation, notice: 'Reservation was successfully created.' }
-          format.json { render :show, status: :created, location: @reservation }
-        else
-          format.html { render :show }
-          format.json { render json: @reservation.errors, status: :unprocessable_entity }
-        end
-      end 
+        respond_to do |format|
+          if @reservation.save
+            format.html { redirect_to @reservation, notice: 'Reservation was successfully created.' }
+            format.json { render :show, status: :created, location: @reservation }
+          else
+            format.html { render :show }
+            format.json { render json: @reservation.errors, status: :unprocessable_entity }
+          end
+        end 
   	end
 
   	def update
