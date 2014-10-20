@@ -4,12 +4,18 @@
   </header>
   <p><label>Full Name:</label> <%= @user.fullname %></p>
   <p><label>Username:</label> <%= @user.username %></p>
+  <p><label>Administrator:</label> <% if(@user.admin) %> true <% else %> false <% end %></p>
 </article>
 
-<%= link_to 'All Users', users_path %> | <%= link_to 'Edit', edit_user_path(@user) %>
+<% if(!current_user.admin) %> <p>Whoops! You're no longer an Administrator. You'll need another Administrator to give you back admin priveleges.</p> <% end%>
 
-<br />
+<% if(current_user.admin) %> <%= link_to 'All Users', users_path %> | <%= link_to 'Edit', edit_user_path(@user) %> 
+
+<br /><br />
 
 <%= button_to 'Delete', @user,
 				method: :delete,
 				data: { confirm: 'Are you sure?' } %>
+
+        <% end %>
+
