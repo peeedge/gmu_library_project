@@ -1,0 +1,15 @@
+<% content_for :fullname, @user.fullname %>
+<article class="user">
+  <header>
+  </header>
+  <p><label>Full Name:</label> <%= @user.fullname %></p>
+  <p><label>Username:</label> <%= @user.username %></p>
+</article>
+
+<%= link_to 'All Users', users_path %> | <%= link_to 'Edit', edit_user_path(@user) %>
+
+<br />
+
+<%= button_to 'Delete', @user,
+				method: :delete,
+				data: { confirm: 'Are you sure?' } %>
