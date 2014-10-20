@@ -1,0 +1,12 @@
+<%= form_for(@user) do |f| %>
+  <%= render 'shared/validation_errors', object: @user %>
+  <%= f.label :fullname %> <%= f.text_field :fullname, autofocus: true %><br /> 
+  <%= f.label :username %> <%= f.text_field :username %><br />
+  Is an Administrators
+  <%= f.check_box :admin %>
+  <br /><br />
+  <p>
+    <%= f.submit %>
+    <%= link_to 'Cancel', users_path %>
+  </p>
+<% end %>

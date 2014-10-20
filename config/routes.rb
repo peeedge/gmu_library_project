@@ -14,7 +14,13 @@ end
 #patch "/books/:id" => "books#update"
 #delete "/books/:id" => "books#destroy"
 
+get "/users/sign_up", as: 'users_sign'
+
 get "/users" => "users#index", as: 'users'
+get "/users/:id" => "users#show", as: 'user'
+get "/users/:id/edit" => "users#edit", as: 'edit_user'
+patch "/users/:id" => "users#update"
+delete "/users/:id" => "users#destroy"
 
 get "/reservations" => "reservations#index", as: 'reservations'
 get "/reservations/new" => "reservations#new", as: 'new_reservation'
@@ -25,6 +31,8 @@ patch "/reservations/:id" => "reservations#update"
 delete "/reservations/:id" => "reservations#destroy"
 
 get "/overdue" => "reservations#overdue", as: 'overdue'
+
+
 
 root 'books#index'
 end

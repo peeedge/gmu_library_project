@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <h2>Welcome <%= current_user.username %>!</h2>
+=======
+Welcome <%= current_user.fullname %>
+>>>>>>> b766d82f05a067c4172ccec5f3690ddfb18037c1
 
 <p>Available as of <%= formatted_time(@available_at) %></p>
 <%= page_entries_info @books %>
@@ -11,4 +15,4 @@
 	</li>
 <% end %>
 </ul>
-<%= paginate @books %>
+<%= paginate @books %>	

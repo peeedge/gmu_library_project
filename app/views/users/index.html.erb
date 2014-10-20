@@ -1,0 +1,10 @@
+<%= page_entries_info @users %>
+<ul>
+	<% @users.each do |user| %>
+  	<li>
+  		<%= link_to(user.fullname, user) %>
+	</li>
+<% end %>
+</ul>
+    <p><%= link_to "Log Out", destroy_user_session_path, :method => :delete %> to Create a New Account</p>
+<%= paginate @users %>

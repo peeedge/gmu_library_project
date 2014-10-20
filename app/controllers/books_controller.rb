@@ -2,7 +2,12 @@ class BooksController < ApplicationController
 
 	def index
 		@available_at = Time.now
+		if params[:search]
+	      @books = Book.search(params[:search]).order("created_at DESC")
+	    else
 		@books = Book.order(:title).page(params[:page])
+#	      @books = Book.order("created_at DESC")
+	    end
 	end
 
 	def new
