@@ -7,7 +7,7 @@
   <p><label>Administrator:</label> <% if(@user.admin) %> true <% else %> false <% end %></p>
 </article>
 
-<% if(!current_user.admin) %> <p>Whoops! You're no longer an Administrator. You'll need another Administrator to give you back admin priveleges.</p> <% end%>
+<% if(!current_user.admin) %> <p>You're not an Administrator. Please contact your Administrator.</p> <% end%>
 
 <% if(current_user.admin) %> <%= link_to 'All Users', users_path %> | <%= link_to 'Edit', edit_user_path(@user) %> 
 
