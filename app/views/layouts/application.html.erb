@@ -12,9 +12,11 @@
     <%= render '/layouts/header' %>
   </div>
   <div class="container">
-     <div id="search">
+     <% if !current_user.nil?%>
+     <div align="right" id="search">
       <%= render :partial => 'books/search' %>
      </div>
+      <% end %>
     <div class="col-xs-9">
       <%= render '/shared/flashes' %>
       <%= yield %>

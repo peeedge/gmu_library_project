@@ -1,7 +1,7 @@
 <ul>
     <% @books.each do |book| %>
-  <li><%= link_to book.title, 
-    :action => 'show', :id => book.id  %>
-   - <%= book.author%> - <%= book.isbn %></li>
+  <li><u><%= link_to book.title, 
+    :action => 'show', :id => book.id  %></u>
+   - <b>Author:</b> <%= book.author%> - <b>ISBN:</b> <%= book.isbn %></li>
    <% end %>
- </ul>
+</ul>
