@@ -42,5 +42,9 @@ get "/overdue" => "reservations#overdue", as: 'overdue'
 
 
 
+
+resources :authors
+
 root 'books#index'
+
 end

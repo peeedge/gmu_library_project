@@ -1,0 +1,18 @@
+<% content_for :name, @author.name %>
+<article class="author">
+  <header>
+  </header>
+  <p><label>Name:</label> <%= @author.name %></p>
+  <p><img src=<%= @author.image_url %> /></p>
+  <p><label>DOB:</label> <%= @author.dob %></p>
+  <p><label>Nationality:</label> <%= @author.nationality %></p>
+  <p><label>Awards:</label> <%= @author.awards %></p>
+  <p><label>Biography:</label> <%= @author.image_url %></p>  
+  
+</article>
+
+<%= link_to 'All Authors', authors_path %> | <%= link_to 'Edit', edit_author_path(@author) %>
+
+<%= button_to 'Delete', @author,
+				method: :delete,
+				data: { confirm: 'Are you sure?' } %>
