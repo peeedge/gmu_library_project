@@ -12,8 +12,9 @@ class Book < ActiveRecord::Base
     has_many :reservations, dependent: :destroy
 
     # It returns the articles whose titles contain one or more words that form the query
-  def self.search(query)
-    # where(:title, query) -> This would return an exact match of the query
-    where("title like ?", "%#{query}%") 
+  def self.search(search)
+    #like_search_condition = "%" + search + "%"
+    #find(:all, :conditions => ['title LIKE ? OR author LIKE ? OR isbn LIKE ?', like_search_condition, like_search_condition, search])
+    search.present? and all(:conditions => [ 'title LIKE ? OR author LIKE ? OR isbn LIKE ?', "%#{search.strip}%", "%#{search.strip}%", "#{search.strip}"])
   end
 end
