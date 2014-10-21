@@ -19,19 +19,18 @@ class ReservationsController < ApplicationController
 
   	def create
         @reservation = Reservation.new(reservation_params)
-        @overdue = Reservation.new(reservation_params)
+        #@overdue = Reservation.new(reservation_params)
 
           @reservation.user_id = current_user.id
           @reservation.reserved_on = Date.today
-          @reservation.due_on  = Date.today + 7
 
-          @overdue.user_id = current_user.id
-          @overdue.reserved_on = Date.today
-          @overdue.due_on  = Date.today - 7
+          #@overdue.user_id = current_user.id
+          #@overdue.reserved_on = Date.today
+          #@overdue.due_on  = Date.today - 7
 
           respond_to do |format|
             if @reservation.save
-              @overdue.save
+              #@overdue.save
               @book = Book.find_by_id(@reservation.book_id) 
               @book.total_in_library = @book.total_in_library - 1
               @book.save
@@ -63,7 +62,7 @@ class ReservationsController < ApplicationController
   	end
 
   	def reservation_params
-  		params.require(:reservation).permit(:book_id)
+  		params.require(:reservation).permit(:book_id, :due_on)
       #params.require(:reservation).permit(:reserved_on, :due_on, :user_id, :book_id, :created_at, :updated_at)
   	end
   	
