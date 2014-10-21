@@ -11,9 +11,15 @@
     <p>
       <%= link_to 'All Books', books_path %>
     </p>
+    <p>
+      <%= link_to 'All Authors', authors_path %>
+    </p>
 <%- if current_user.try(:admin?)%>
     <p>
       <%= link_to 'New Book', new_book_path %>
+    </p>
+    <p>
+      <%= link_to 'New Author', new_author_path %>
     </p>
     <p><%= link_to 'OverDue Book' %></p>
 <% end -%>

@@ -1,0 +1,10 @@
+Welcome <%= current_user.username %>
+
+<p>Available as of <%= formatted_time(@available_at) %></p>
+<ul>
+	<% @authors.each do |author| %>
+  <li>
+  		<%= link_to(author.name, author) %>
+	</li>
+<% end %>
+</ul>

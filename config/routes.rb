@@ -11,10 +11,8 @@ delete "/books/:id" => "books#destroy"
 get "/users" => "users#index", as: 'users'
 
 
-get "/authors" => "authors#index", as: 'authors'
-get "/authors/:id" => "authors#show", as: 'author'
+resources :authors
 
 root 'books#index'
-
 
 end
