@@ -2,7 +2,6 @@ class Book < ActiveRecord::Base
 
 	GENRES = 'Mystery', 'NonFiction', 'Fiction'
 	TOTALINLIBRARY = 0,1,2,3,4,5
-	#AUTHORS = 
 	validates :isbn, :title, :abstract, :pages, :genre, :total_in_library, :author, presence: true
 	validates :abstract, length: { minimum: 15 }, unless: 'abstract.blank?'
 	validates :pages,
