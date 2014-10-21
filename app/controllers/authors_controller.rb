@@ -2,7 +2,7 @@ class AuthorsController < ApplicationController
 
 	def index
 		@available_at = Time.now
-		@authors = author.order(:title)
+		@authors = author.order(:name)
 	end
 
 	def new
@@ -10,13 +10,14 @@ class AuthorsController < ApplicationController
 	end
 	
 	def show
+		@author = Author.find(params[:id])
 	end
 
 
 	def create
 		@author = author.new(author_params)
 		if @author.save
-			redirect_to @author, notice: "#{@author.title} was created!"
+			redirect_to @author, notice: "#{@author.name} was created!"
 		else
 			render :new
 		end
@@ -27,7 +28,7 @@ class AuthorsController < ApplicationController
 
 	def update
 		if @author.update(author_params)
-			redirect_to @author, notice: "#{@author.title} was upadated!"
+			redirect_to @author, notice: "#{@author.name} was upadated!"
 		else
 			render :new
 		end
@@ -47,7 +48,7 @@ class AuthorsController < ApplicationController
 	before_action :set_author, only: [ :show, :edit, :update, :destroy]
 
 	def set_author
-		@author = Author.find(params[:id])
+		@author = Author.find(params[:name])
 	end
 
 end
