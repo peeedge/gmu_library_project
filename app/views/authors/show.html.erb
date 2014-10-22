@@ -7,12 +7,13 @@
   <p><label>DOB:</label> <%= @author.dob %></p>
   <p><label>Nationality:</label> <%= @author.nationality %></p>
   <p><label>Awards:</label> <%= @author.awards %></p>
-  <p><label>Biography:</label> <%= @author.image_url %></p>  
+  <p><label>Biography:</label> <%= @author.biography %></p>  
   
 </article>
 
-<%= link_to 'All Authors', authors_path %> | <%= link_to 'Edit', edit_author_path(@author) %>
+<%= link_to 'All Authors', authors_path %> <%- if current_user.try(:admin?)%>| <%= link_to 'Edit', edit_author_path(@author) %>
 
 <%= button_to 'Delete', @author,
 				method: :delete,
 				data: { confirm: 'Are you sure?' } %>
+        <% end %> 
