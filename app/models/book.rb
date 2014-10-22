@@ -1,5 +1,5 @@
 class Book < ActiveRecord::Base
-
+  belongs_to :author
 	GENRES = 'Mystery', 'NonFiction', 'Fiction'
 	TOTALINLIBRARY = 0,1,2,3,4,5
 	validates :isbn, :title, :abstract, :pages, :genre, :total_in_library, :author, presence: true

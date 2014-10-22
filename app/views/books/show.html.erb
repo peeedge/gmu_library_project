@@ -4,7 +4,7 @@
   </header>
   <p><label>Title:</label> <%= @book.title %></p>
   <p><img src=<%= @book.image_cover_url %> /></p>
-  <p><label>Author:</label> <%= @book.author %></p>
+  <p><label>Author:</label> <%= @book.author.name %></p>
   <p><label>Pages:</label> <%= number_with_delimiter(@book.pages) %></p>
   <p><label>isbn:</label> <%= @book.isbn %></p>
   <p><label>genre:</label> <%= @book.genre %></p>

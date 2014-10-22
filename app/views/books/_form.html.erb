@@ -1,7 +1,7 @@
 <%= form_for(@book) do |f| %>
   <%= render 'shared/validation_errors', object: @book %>
   <%= f.label :title %> <%= f.text_field :title, autofocus: true %><br /> 
-  <%= f.label :author %> <%= f.select :author, options_for_select(Author.all.map{|s|[s.name, s.id]}), prompt: 'Select Author' %><br />
+  <%= f.label :author_id %> <%= f.select :author_id, options_for_select(Author.all.map{|s|[s.name, s.id]}), prompt: 'Select Author' %><br />
   <%= f.label :pages %> <%= f.text_field :pages %><br />
   <%= f.label :isbn %> <%= f.text_field :isbn %><br />
   <%= f.label :image_cover_url %> <%= f.text_field :image_cover_url %><br />

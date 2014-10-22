@@ -6,7 +6,7 @@ Welcome <%= current_user.fullname %>
 	<% @books.each do |book| %>
   <li>
   		<%= link_to(book.title, book) %>
-  		by <%= book.author %><br/>
+  		by <%= book.author.name %><br/>
   		
 	</li>
 <% end %>
