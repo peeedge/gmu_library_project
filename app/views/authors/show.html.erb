@@ -2,7 +2,7 @@
 <article class="author">
   <header>
   </header>
-  <p><label>Name:</label> <%= @author.name %></p>
+  <p><label>Name:</label> <%= link_to(@author.name, @author) %></p>
   <p><img src=<%= @author.image_url %> /></p>
   <p><label>DOB:</label> <%= @author.dob %></p>
   <p><label>Nationality:</label> <%= @author.nationality %></p>
@@ -12,8 +12,9 @@
 </article>
 
 <%= link_to 'All Authors', authors_path %> <%- if current_user.try(:admin?)%>| <%= link_to 'Edit', edit_author_path(@author) %>
-
+<% if(@books.present?) %>
 <%= button_to 'Delete', @author,
 				method: :delete,
 				data: { confirm: 'Are you sure?' } %>
         <% end %> 
+<% end %>
