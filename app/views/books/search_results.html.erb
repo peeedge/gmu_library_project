@@ -1,3 +1,4 @@
+<% if(@books.present?) %>
 <ul>
     <% @books.each do |book| %>
   <li><u><%= link_to book.title, 
@@ -5,3 +6,6 @@
    - <b>Author:</b> <%= book.author%> - <b>ISBN:</b> <%= book.isbn %></li>
    <% end %>
 </ul>
+<% else %>
+ <b>No Search Results.</b>
+<% end %>
