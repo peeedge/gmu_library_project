@@ -28,19 +28,19 @@ class ReservationsController < ApplicationController
           #@overdue.reserved_on = Date.today
           #@overdue.due_on  = Date.today - 7
 
-          respond_to do |format|
-            if @reservation.save
-              #@overdue.save
-              @book = Book.find_by_id(@reservation.book_id) 
-              @book.total_in_library = @book.total_in_library - 1
-              @book.save
-              format.html { redirect_to reservations_url, notice: 'Reservation was successfully created.' }
-              format.json { render :show, status: :created, location: reservations_url }
-            else
-              format.html { render :show }
-              format.json { render json: @reservation.errors, status: :unprocessable_entity }
+            respond_to do |format|
+              if @reservation.save
+                #@overdue.save
+                @book = Book.find_by_id(@reservation.book_id) 
+                @book.total_in_library = @book.total_in_library - 1
+                @book.save
+                format.html { redirect_to reservations_url, notice: 'Reservation was successfully created.' }
+                format.json { render :show, status: :created, location: reservations_url }
+              else
+                format.html { render :show }
+                format.json { render json: @reservation.errors, status: :unprocessable_entity }
+              end
             end
-          end 
   	end
 
   	def update
