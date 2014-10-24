@@ -14,6 +14,6 @@ class Book < ActiveRecord::Base
   def self.search(search)
     #like_search_condition = "%" + search + "%"
     #find(:all, :conditions => ['title LIKE ? OR author LIKE ? OR isbn LIKE ?', like_search_condition, like_search_condition, search])
-    search.present? and all(:conditions => [ 'title LIKE ? OR isbn LIKE ?', "%#{search.strip}%", "#{search.strip}"])
+    search.present? and Book.joins(:author).where("books.title LIKE ? or books.isbn LIKE ? or authors.name LIKE ?", "%#{search.strip}%", "#{search.strip}", "%#{search.strip}%")
   end
 end
