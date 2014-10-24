@@ -1,11 +1,11 @@
 <% if(@books.present?) %>
-<ul>
-    <% @books.each do |book| %>
-  <li><u><%= link_to book.title, 
-    :action => 'show', :id => book.id  %></u>
-   - <b>Author:</b> <%= book.author.name %> - <b>ISBN:</b> <%= book.isbn %></li>
-   <% end %>
-</ul>
+	<ul>
+	    <% @books.each do |book| %>
+	  <li><u><%= link_to book.title, 
+	    :action => 'show', :id => book.id  %></u>
+	   - <b>Author:</b> <u><%= link_to(book.author.name, book.author) %></u> - <b>ISBN:</b> <%= book.isbn %></li>
+	   <% end %>
+	</ul>
 <% else %>
- <b>No Search Results.</b>
+     <b>No Search Results</b>
 <% end %>
