@@ -26,3 +26,14 @@ Things you may want to cover:
 
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
+
+User name and Passwords are the same.
+
+You can use 
+admin and admin
+to test adminstrator access
+
+and 
+
+nonadmin and nonadmin
+to test non- administrator access
